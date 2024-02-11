@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./deco/css/cocktails0.css">
+</head>
+<body class="container-fluid">
+<?php include 'templates/include/menu.php';?>
+            <h1>Mister Cocktail</h1>
+    
+    <h2>Modification d'un cocktail</h2>
+
+    <form action="EDITION_COC.php" method="POST">
+        <input type="hidden" name="id" value="<?= $cocktail['id'] ?>">
+        <div class="form-group col-4">
+            <label for="idFamille">Famille :</label>
+            <select class="form-control" id="idFamille" name="idFamille">
+                <?php foreach($famillesCocktails as $famille): ?>
+                    <?php if($famille['id'] == $cocktail['idFamille']): ?>
+                        <option value="<?= $famille['id'] ?>" selected><?= $famille['nomFamille'] ?></option>
+                    <?php else: ?>
+                        <option value="<?= $famille['id'] ?>"><?= $famille['nomFamille'] ?></option>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group col-8">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" name="nom" maxlength="30" value="<?= $cocktail['nom'] ?>">
+        </div>
+        <div class="form-group col-12">
+            <label for="nom">Description :</label>
+            <textarea class="form-control" id="description" name="description"><?= $cocktail['description'] ?></textarea>
+        </div>
+        <div class="form-group col-3">
+            <label for="nom">Année conception :</label>
+            <input type="number" class="form-control" id="anneeConception" name="anneeConception" placeholder="1900" value="<?= $cocktail['anneeConception'] ?>">
+        </div>
+        <div class="form-group col-3">
+            <label for="nom">Prix moyen :</label>
+            <input type="text" class="form-control" id="prixMoyen" name="prixMoyen" value="<?= $cocktail['prixMoyen'] ?>">
+        </div>
+
+
+        <div class="form-group col-3">
+            <label style="padding-right: 10px;"  for="nom">Ingredient(s) :</label><br />
+            <?php foreach($listIngredient as $rowIngredient){ ?>
+                <?php 
+                    $checked = "";
+                    if(in_array($rowIngredient['id'], $tabIngredientCocktail)){
+                        $checked = "checked=\"checked\"";
+                    }
+                ?>
+                <input type="checkbox" name="ingredients[]" <?php echo $checked; ?> value="<?php echo $rowIngredient['id']; ?>" ><?php echo $rowIngredient['nom']; ?><br />
+            <?php } ?>
+        </div>
+
+
+        <div class="form-group col-12">
+            <button type="submit" class="btn">Enregistrer</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./deco/css/cocktails0.css">
+</head>
+<body class="container-fluid">
+   
+<nav class="bandeau">
+    <a href="index.php">Accueil</a>
+    <a href="ajout_ingredient.php">Ajout ingredient</a>
+    <a href="indexBO.php">BackOffice</a>
+    <a href="deconsess.php">Deconnexion</a>
+   
+</nav>
+
+<div class="kiss">
+            <h1>Mister Cocktail</h1>
+            <img src="./deco/images/bouche.gif" alt="kiss">
+</div>
+
+            <h2>Nouveau cocktail</h2>
+   
+
+    <form action="ajoutcoc.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group col-4">
+                <label for="idFamille">Famille :</label>
+                <select class="form-control" id="idFamille" name="idFamille">
+                    <?php foreach($famillesCocktails as $famille): ?>
+                        <option value="<?= $famille['id'] ?>"><?= $famille['nomFamille'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group col-8">
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control" id="nom" name="nom" maxlength="30">
+            </div>
+            <div class="form-group col-12">
+                <label for="nom">Photo :</label>
+                <input type="file" class="form-control" id="urlPhoto" name="urlPhoto">
+            </div>
+            <div class="form-group col-12">
+                <label for="nom">Description :</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <div class="form-group col-3">
+                <label for="nom">Année conception :</label>
+                <input type="number" class="form-control" id="anneeConception" name="anneeConception" placeholder="1900">
+            </div>
+            <div class="form-group col-3">
+                <label for="nom">Prix moyen :</label>
+                <input type="text" class="form-control" id="prixMoyen" name="prixMoyen">
+            </div>
+
+        <div class="form-group col-12">
+            <button type="submit" class="btn">Enregistrer</button>
+        </div>
+    
+    </form>
+
+</body>
+</html>

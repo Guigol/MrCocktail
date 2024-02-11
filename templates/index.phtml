@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./deco/css/cocktails0.css">
+
+    
+    <title>Mister Cocktail</title>
+    <!-- Charger CSS de bootstrap, police Montserrat sur Google Fonts et le CSS de l'application -->
+</head>
+<body class="container-fluid">
+<?php include 'templates/include/menu.php'; ?>
+
+<div class="kiss">
+            <h1>Mister Cocktail</h1>
+            <img src="./deco/images/bouche.gif" alt="kiss">
+</div>
+   
+ <!-- Listing de tous les cocktails -->
+ 
+    <main class="tab">
+             
+   
+        <?php foreach($cocktails as $cocktail){ ?>
+        <article class="card cocktail">
+                 <img class="card-img-top" src="deco/images/cocktails/<?= $cocktail['urlPhoto'] ?>" alt="<?= $cocktail['description'] ?>">
+                 <a class="detail" href="details_cocktail.php?id=<?= $cocktail['id'] ?>"><span><strong>Détails</strong></span></a>
+                </a>
+            <div class="card-body">
+                <h4 class="card-title"><?= $cocktail['nom'] ?></h4>
+                <p class="card-text"><?= $cocktail['description'] ?></p>
+            </div>
+        </article>
+        <?php } ?>
+    </main>
+</body>
+</html>
+
+    </main>
+</body>
+</html>

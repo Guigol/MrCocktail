@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./deco/css/cocktails0.css">
+</head>
+<body 
+class="container-fluid">
+    <nav class="bandeau">
+        <a href="index.php"> Accueil </a>
+        <a href="ajoutcoc.php"> Ajout cocktail...</a>
+        <a href="ajout_ingredient.php">Ajout ingredient...</a>
+        <a href="indexBO.php">BackOffice</a>
+     </nav>
+
+     <h1>Mister Cocktail</h1>
+
+    <h2>Détails du cocktail</h2>
+    
+    <!-- Liste des informations sur le cocktail -->
+    <ul>
+        <li>Nom : <?= $cocktail['nom'] ?></li>
+        <li>Famille : <?= $cocktail['nomFamille'] ?></li>
+        <li>Description : <?= $cocktail['description'] ?></li>
+        <li>Année conception : <?= $cocktail['anneeConception'] ?></li>
+        <li>Prix moyen : <?= $cocktail['prixMoyen'] ?> €</li>
+    </ul>
+    <ul>
+        <?php foreach($ingredientsCocktail as $ingredientCocktail): ?>
+            <li>Ingrédient : <?= $ingredientCocktail['nom'] ?></li>
+        <?php endforeach; ?>
+    </ul>
+</body>
+</html>
